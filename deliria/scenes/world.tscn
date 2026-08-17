@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dcrufrtokfofx"]
+
+[ext_resource type="PackedScene" uid="uid://c755r225tjq0q" path="res://scenes/player.tscn" id="1_nnsk1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(175.53125, 149.25)
+
+[node name="World" type="Node2D" unique_id=749562082]
+
+[node name="Player" parent="." unique_id=532465995 instance=ExtResource("1_nnsk1")]
+position = Vector2(72, 40)
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=351181500]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1553805208]
+position = Vector2(126, 201.375)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Wall2" type="StaticBody2D" parent="." unique_id=1809759253]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" unique_id=549843539]
+position = Vector2(879, 304)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Wall3" type="StaticBody2D" parent="." unique_id=1965728228]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3" unique_id=591724518]
+position = Vector2(236, 456)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Wall4" type="StaticBody2D" parent="." unique_id=2130917374]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4" unique_id=1009941557]
+position = Vector2(612, 78)
+shape = SubResource("RectangleShape2D_g4v7s")
