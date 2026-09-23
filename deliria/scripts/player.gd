@@ -3,6 +3,11 @@ extends CharacterBody2D
 @export var speed: float = 200.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health = $Health
+
+
+func _ready():
+	health.died.connect(_on_died)
 
 
 func _physics_process(_delta):
@@ -25,3 +30,12 @@ func update_animation(direction: Vector2):
 		animated_sprite.play("idle")
 	else:
 		animated_sprite.play("run")
+
+
+func take_damage(amount: int):
+	health.take_damage(amount)
+
+
+func _on_died():
+	print("O jogador morreu!")
+	get_tree().reload_current_scene()

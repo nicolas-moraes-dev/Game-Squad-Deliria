@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cd85lu23micpw" path="res://assets/player/r4.png" id="9_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://boivx8wnobpg8" path="res://assets/player/r5.png" id="10_oprun"]
 [ext_resource type="Texture2D" uid="uid://cyqwh3ih2ut07" path="res://assets/player/r6.png" id="11_a8ls1"]
+[ext_resource type="Script" uid="uid://bd8a7jy2is0sf" path="res://scripts/health.gd" id="12_3v2ag"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(61.5, 67.25)
@@ -80,3 +81,6 @@ position = Vector2(427.99997, 162)
 scale = Vector2(0.9414062, 1.1041667)
 sprite_frames = SubResource("SpriteFrames_yf5fn")
 animation = &"run"
+
+[node name="Health" type="Node" parent="." unique_id=30189587]
+script = ExtResource("12_3v2ag")

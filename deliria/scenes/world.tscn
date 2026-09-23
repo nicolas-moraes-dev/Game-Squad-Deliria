@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c755r225tjq0q" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="Texture2D" uid="uid://bfm7qu5wtqn4k" path="res://Tiny Swords (Free Pack)/Terrain/Tileset/Tilemap_color5.png" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://dgkysdqmh1duj" path="res://Tiny Swords (Free Pack)/Buildings/Blue Buildings/Castle.png" id="2_4wyf3"]
+[ext_resource type="Script" uid="uid://dls3n52da7qlm" path="res://scenes/damage_area.gd" id="4_k0juu"]
+[ext_resource type="Script" uid="uid://byxbgmxl1mnu1" path="res://scenes/health_bar.gd" id="5_71j4m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
 texture = ExtResource("1_rwgxs")
@@ -1064,6 +1066,9 @@ texture = ExtResource("2_4wyf3")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_k0juu")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0juu"]
+size = Vector2(124, 118)
+
 [node name="World" type="Node2D" unique_id=749562082]
 position = Vector2(47, 18)
 
@@ -1079,3 +1084,28 @@ tile_set = SubResource("TileSet_rrhll")
 [node name="Player" parent="." unique_id=532465995 instance=ExtResource("1_nnsk1")]
 position = Vector2(-11, 8)
 safe_margin = 0.001
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1672829648]
+position = Vector2(934, 415)
+script = ExtResource("4_k0juu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=1948279837]
+position = Vector2(6, -4)
+shape = SubResource("RectangleShape2D_k0juu")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=77269354]
+
+[node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=240103972]
+anchors_preset = -1
+anchor_left = 0.030000001
+anchor_top = 0.037
+anchor_right = 0.379
+anchor_bottom = 0.079
+offset_left = 0.43999863
+offset_top = 0.024000168
+offset_right = 0.3919983
+offset_bottom = -0.19200134
+value = 100.0
+script = ExtResource("5_71j4m")
+
+[connection signal="body_entered" from="DamageArea" to="DamageArea" method="_on_body_entered"]
