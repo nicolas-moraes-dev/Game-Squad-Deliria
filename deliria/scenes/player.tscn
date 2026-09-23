@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cyqwh3ih2ut07" path="res://assets/player/r6.png" id="11_a8ls1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(135, 166.5)
+size = Vector2(61.5, 67.25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
 animations = [{
@@ -64,10 +64,11 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=532465995]
+position = Vector2(40, 24)
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1811891511]
-position = Vector2(470, 415.75)
+position = Vector2(418, 163)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2079701666]
@@ -75,7 +76,7 @@ position = Vector2(536, 298)
 position_smoothing_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=513143664]
-position = Vector2(384, 163)
+position = Vector2(427.99997, 162)
 scale = Vector2(0.9414062, 1.1041667)
 sprite_frames = SubResource("SpriteFrames_yf5fn")
 animation = &"run"
