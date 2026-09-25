@@ -5,10 +5,10 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health = $Health
 
+var last_direction := Vector2.DOWN
 
 func _ready():
 	health.died.connect(_on_died)
-
 
 func _physics_process(_delta):
 	var direction = Input.get_vector(
@@ -24,17 +24,35 @@ func _physics_process(_delta):
 
 	update_animation(direction)
 
-
 func update_animation(direction: Vector2):
-	if direction == Vector2.ZERO:
-		animated_sprite.play("idle")
-	else:
-		animated_sprite.play("run")
+	if direction != Vector2.ZERO:
+		last_direction = direction
 
+		if abs(direction.x) > abs(direction.y):
+			if direction.x > 0:
+				animated_sprite.play("run_right")
+			else:
+				animated_sprite.play("run_left")
+		else:
+			if direction.y > 0:
+				animated_sprite.play("run_down")
+			else:
+				animated_sprite.play("run_up")
+
+	else:
+		if abs(last_direction.x) > abs(last_direction.y):
+			if last_direction.x > 0:
+				animated_sprite.play("idle_right")
+			else:
+				animated_sprite.play("idle_left")
+		else:
+			if last_direction.y > 0:
+				animated_sprite.play("idle_down")
+			else:
+				animated_sprite.play("idle_up")
 
 func take_damage(amount: int):
 	health.take_damage(amount)
-
 
 func _on_died():
 	print("O jogador morreu!")
